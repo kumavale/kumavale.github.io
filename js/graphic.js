@@ -17,32 +17,34 @@ const COL8_008484 = "#008484";
 const COL8_848484 = "#848484";
 
 
-window.onload = function()
+function graphic()
 {
-    let vram = document.getElementById('screen');
+    let vram  = document.getElementById('screen');
+    let title = document.getElementById('title_back');
 
     init_screen8(vram);
     make_window8(vram, 320, 200);
-};
+
+    boxfill8(title, COL8_FFFFFF, "1px", "1px", "10%", "95%", "title_icon");
+    boxfill8(title, COL8_FFFFFF, "10%", "1px", "89%", "95%", "title_text");
+}
 
 function init_screen8(vram)
 {
     boxfill8(vram, COL8_008484,    "0%",   " 0%", "100%",   "86%");
-    boxfill8(vram, COL8_C6C6C6,    "0%",   "86%", "100%",  "0.5%");
-    boxfill8(vram, COL8_FFFFFF,    "0%", "86.5%", "100%",  "0.5%");
-    boxfill8(vram, COL8_C6C6C6,    "0%",   "87%", "100%",   "13%");
+    boxfill8(vram, COL8_008484,    "0%",   " 0%",  "90%",   "80%", "textarea");
+    boxfill8(vram, COL8_C6C6C6,    "0%",   "86%", "100%",   "14%");
+    boxfill8(vram, COL8_FFFFFF,    "0%", "86.5%", "100%",   "2px");
 
-    boxfill8(vram, COL8_FFFFFF,  "1.5%",   "88%",  "22%",  "0.5%");
-    boxfill8(vram, COL8_FFFFFF,    "1%",   "88%", "0.5%",   "10%");
-    boxfill8(vram, COL8_848484,  "1.5%",   "98%",  "22%",  "0.5%");
-    boxfill8(vram, COL8_848484,   "23%", "88.5%", "0.5%",  "9.5%");
-    boxfill8(vram, COL8_000000,  "1.5%", "98.5%",  "22%",  "0.5%");
-    boxfill8(vram, COL8_000000, "23.5%", "88.5%", "0.5%", "10.5%");
+    boxfill8(vram, COL8_FFFFFF,  "1.5%",   "88%",  "22%",   "3px");
+    boxfill8(vram, COL8_FFFFFF,  "1.5%",   "88%",  "3px",   "10%");
+    boxfill8(vram, COL8_848484,  "1.5%",   "98%",  "22%",   "3px");
+    boxfill8(vram, COL8_848484, "23.5%", "88.5%",  "3px",   "10%");
 
-    boxfill8(vram, COL8_848484,   "80%",   "88%",  "18%",  "0.5%");
-    boxfill8(vram, COL8_848484,   "80%", "88.5%", "0.5%",   "10%");
-    boxfill8(vram, COL8_FFFFFF,   "80%", "98.5%",  "18%",  "0.5%");
-    boxfill8(vram, COL8_FFFFFF,   "98%",   "88%", "0.5%",   "11%");
+    boxfill8(vram, COL8_848484,   "80%",   "88%", "18.5%",  "3px");
+    boxfill8(vram, COL8_848484,   "80%",   "88%",   "3px",  "10%");
+    boxfill8(vram, COL8_FFFFFF,   "80%",   "98%", "18.5%",  "3px");
+    boxfill8(vram, COL8_FFFFFF, "98.5%", "88.5%",   "3px",  "10%");
 }
 
 function make_window8(vram, w, h)
@@ -50,8 +52,10 @@ function make_window8(vram, w, h)
     let cons = document.createElement('div');
     cons.id = 'console';
     cons.style.position = 'absolute';
-    cons.style.top  = '2%';
-    cons.style.left = '2%';
+    cons.style.top      = '2%';
+    cons.style.right    = '2%';
+    cons.style.width    = '320px'
+    cons.style.height   = '200px'
     vram.appendChild(cons);
 
     boxfill8(cons, COL8_C6C6C6, "0px",  "0px", "320px", "200px");
@@ -65,14 +69,11 @@ function make_window8(vram, w, h)
 
     document.getElementById('cons_title').innerText = 'console';
 
-    let input = document.createElement('input');
-    input.id = 'input';
-    input.autocomplete = 'off';
-    input.spellcheck   = 'false';
-    input.autofocus    = 'true';
-    //  onkeypress='check(event.keyCode);'
-    document.getElementById('cons_text').innerText = '>';
-    document.getElementById('cons_text').appendChild(input);
+    document.getElementById('cons_text').innerHTML =
+        '> ls<br />' +
+        '<span onclick="click_about()">About</span><br />' +
+        '<span onclick="click_history()">History</span><br />' +
+        '<span onclick="click_certification()">Certification</span><br />';
 
     document.getElementById('cons_cross').innerText = 'X';
 }

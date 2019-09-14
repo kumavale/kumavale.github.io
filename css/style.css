@@ -1,8 +1,15 @@
-#title {
+#title_back {
     margin: auto;
     border: 1px solid #000000;
     width: 96%;
     padding-top: 5%;
+    position: relative;
+}
+
+#title_icon {
+}
+
+#title_text {
 }
 
 #screen {
@@ -27,6 +34,7 @@
     padding-top: 4px;
     font-size: 18px;
     font-family: "MS Gothic";
+    line-height: 26px;
 }
 
 #cons_cross {
@@ -42,5 +50,18 @@
     background-color: transparent;
     font-size: 18px;
     font-family: "MS Gothic";
+}
+
+#textarea {
+    color: #FFFFFF;
+    font-size: 16px;
+    padding-left: 8px;
+    padding-top: 8px;
+    font-family: sans-serif;
+}
+
+span {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
