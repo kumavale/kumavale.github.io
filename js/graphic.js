@@ -25,8 +25,8 @@ function graphic()
     init_screen8(vram);
     make_window8(vram, 320, 200);
 
-    boxfill8(title, COL8_FFFFFF, "1px", "1px", "10%", "95%", "title_icon");
-    boxfill8(title, COL8_FFFFFF, "10%", "1px", "89%", "95%", "title_text");
+    boxfill8(title, 0, "1px", "1px",  "8%", "95%", "title_icon");
+    boxfill8(title, 0,  "8%", "1px", "91%", "95%", "title_text");
 }
 
 function init_screen8(vram)
@@ -39,12 +39,12 @@ function init_screen8(vram)
     boxfill8(vram, COL8_FFFFFF,  "1.5%",   "88%",  "22%",   "3px");
     boxfill8(vram, COL8_FFFFFF,  "1.5%",   "88%",  "3px",   "10%");
     boxfill8(vram, COL8_848484,  "1.5%",   "98%",  "22%",   "3px");
-    boxfill8(vram, COL8_848484, "23.5%", "88.5%",  "3px",   "10%");
+    boxfill8(vram, COL8_848484, "23.5%",   "88%",  "3px",   "10%");
 
     boxfill8(vram, COL8_848484,   "80%",   "88%", "18.5%",  "3px");
     boxfill8(vram, COL8_848484,   "80%",   "88%",   "3px",  "10%");
     boxfill8(vram, COL8_FFFFFF,   "80%",   "98%", "18.5%",  "3px");
-    boxfill8(vram, COL8_FFFFFF, "98.5%", "88.5%",   "3px",  "10%");
+    boxfill8(vram, COL8_FFFFFF, "98.5%",   "88%",   "3px",  "10%");
 }
 
 function make_window8(vram, w, h)
@@ -71,14 +71,15 @@ function make_window8(vram, w, h)
 
     document.getElementById('cons_text').innerHTML =
         '> ls<br />' +
-        '<span onclick="click_about()">About</span><br />' +
-        '<span onclick="click_history()">History</span><br />' +
-        '<span onclick="click_certification()">Certification</span><br />';
+        '<span id="click_about" onclick="click_about()">About</span><br />' +
+        //'<span id="click_history" onclick="click_history()">History</span><br />' +
+        '<span id="click_certification" onclick="click_certification()">Certification</span><br />';
 
-    document.getElementById('cons_cross').innerText = 'X';
+    document.getElementById('cons_cross').innerHTML =
+        '<span id="click_cross" onclick="click_cross()">X</span>';
 }
 
-function boxfill8(vram, c, l, t, w, h, title)
+function boxfill8(vram, c, l, t, w, h, id)
 {
     let div = document.createElement('div');
 
@@ -89,8 +90,8 @@ function boxfill8(vram, c, l, t, w, h, title)
     div.style.width    = w;
     div.style.height   = h;
 
-    if (title) {
-        div.id = title;
+    if (id) {
+        div.id = id;
     }
 
     vram.appendChild(div);
