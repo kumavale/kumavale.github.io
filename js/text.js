@@ -1,15 +1,39 @@
+var age = (function() {
+    let url = 'https://ntp-a1.nict.go.jp/cgi-bin/json';
+    let birthday = new Date('1998/12/22 00:00');
+    let ret;
+
+    try {
+        let req = new XMLHttpRequest();
+        req.open('HEAD', window.location.href, false);
+        req.send(null);
+        if (req.readyState == 4) {
+            let now = new Date(req.getResponseHeader('Date'));
+            ret = ((now.getFullYear() - birthday.getFullYear()));
+            if ((now.getMonth() < (12-1)) ||
+                    ((now.getMonth() >= (12-1)) && (now.getDate() < 22))) {
+                --ret;
+            }
+        } else {
+            ret = 'undefined';
+        }
+    } catch(e) {
+        console.log(e.message);
+        ret = 'null';
+    }
+
+    return ret;
+}());
 
 var About_text =
-    // TODO
     '' +
-    'Press Shift+F2 to visible console.<br />' +
+    '※Press Shift+F2 to visible console.<br />' +
     '<br />' +
-    'C, C#, ...<br />' +
-    'Infrastructure, Low layer, Game<br />' +
-    //'セキュリティ・ミニキャンプ in やまなし 2017<br />' +
-    //'セキュリティ・ミニキャンプ in 石川 2018<br />' +
+    'Age: ' + age + '<br />' +
+    'Language: C, C#, ...<br />' +
+    'Interest: Infrastructure, Low layer, Game, English, ...<br />' +
     '<br />' +
-    '<table border="0" width="160">' +
+    '<table border="0" width="168">' +
         '<tr align="center">' +
         '<td>' +
             '<a href="https://github.com/yorimoi/" target="_blank">' +
@@ -31,7 +55,7 @@ var About_text =
 
 var Certification_text =
     '2016/05&nbsp;&nbsp;ITパスポート<br />' +
-    '2016/09&nbsp;&nbsp;c言語プログラミング能力認定試験 3級<br />' +
+    '2016/09&nbsp;&nbsp;C言語プログラミング能力認定試験 3級<br />' +
     '2016/11&nbsp;&nbsp;基本情報技術者試験<br />' +
     '2017/06&nbsp;&nbsp;LPIC 101 (740/800)<br />' +
     '2017/07&nbsp;&nbsp;LPIC 102 (640/800)<br />' +

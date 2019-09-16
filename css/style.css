@@ -63,7 +63,8 @@ body {
     font-size: 20px;
     padding-left: 8px;
     padding-top: 8px;
-    font-family: sans-serif;
+    font-family: 'NSimSun', 'Avenir', 'MS Gothic:';
+    line-height: 1;
 }
 
 span {
