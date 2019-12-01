@@ -30,13 +30,16 @@ var About_text =
     '※Press Shift+F2 to visible console.<br />' +
     '<br />' +
     'Age: ' + age + '<br />' +
-    'Language: C, C#, ...<br />' +
-    'Interest: Infrastructure, Low layer, Game, English, ...<br />' +
+    'Language: C, C#, Rust ...<br />' +
+    'Interest: Infrastructure, Low level, Network, Weather ...<br />' +
+    'Like: Cat, Penguin, Wolf ...<br />' +
+    'Hobby: Wolking, Programming ...<br />' +
+    '      (In the old days: Mountaineering, Cycling)<br />' +
     '<br />' +
     '<table border="0" width="168">' +
         '<tr align="center">' +
         '<td>' +
-            '<a href="https://github.com/yorimoi/" target="_blank">' +
+            '<a href="https://github.com/kumavale/" target="_blank">' +
                 '<img src="images/github.png" width="64" style="background-color:#FFF;">' +
             '</a>' +
         '</td>' +
@@ -54,17 +57,11 @@ var About_text =
 ;
 
 var Certification_text =
-    '2016/05&nbsp;&nbsp;ITパスポート<br />' +
-    '2016/09&nbsp;&nbsp;C言語プログラミング能力認定試験 3級<br />' +
-    '2016/11&nbsp;&nbsp;基本情報技術者試験<br />' +
-    '2017/06&nbsp;&nbsp;LPIC 101 (740/800)<br />' +
-    '2017/07&nbsp;&nbsp;LPIC 102 (640/800)<br />' +
-    '2018/02&nbsp;&nbsp;MOS Excel 2013 Expert Part1 (1000/1000)<br />' +
-    '2018/03&nbsp;&nbsp;MOS Word 2013 (1000/1000)<br />' +
-    '2018/07&nbsp;&nbsp;ICND1 with English (919/1000)<br />' +
-    '2018/09&nbsp;&nbsp;ICND2 with English (850/1000)<br />' +
-    '2018/11&nbsp;&nbsp;応用情報技術者試験<br />' +
-    '2019/06&nbsp;&nbsp;LPIC 201 (720/800)<br />' +
-    '2019/07&nbsp;&nbsp;LPIC 202 (640/800)<br />' +
-    '2019/07&nbsp;&nbsp;LPIC 304 (720/800)<br />'
+    ' * ITパスポート<br />' +
+    ' * 基本情報技術者試験<br />' +
+    ' * 応用情報技術者試験<br />' +
+    ' * MOS Word 2013<br />' +
+    ' * MOS Excel 2013 Expert<br />' +
+    ' * CCNA (ICND1,ICND2)<br />' +
+    ' * LPIC 1,2,3(304)<br />' +
 ;
