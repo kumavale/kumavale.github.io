@@ -63,5 +63,5 @@ var Certification_text =
     ' * MOS Word 2013<br />' +
     ' * MOS Excel 2013 Expert<br />' +
     ' * CCNA (ICND1,ICND2)<br />' +
-    ' * LPIC 1,2,3(304)<br />' +
+    ' * LPIC 1,2,3(304)<br />'
 ;
