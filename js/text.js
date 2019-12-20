@@ -31,9 +31,9 @@ var About_text =
     '<br />' +
     'Age: ' + age + '<br />' +
     'Language: C, C#, Rust ...<br />' +
-    'Interest: Infrastructure, Low level, Network, Weather ...<br />' +
+    'Interest: Infrastructure, Low level, Weather ...<br />' +
     'Like: Cat, Penguin, Wolf ...<br />' +
-    'Hobby: Wolking, Programming ...<br />' +
+    'Hobby: Walking, Programming ...<br />' +
     '      (In the old days: Mountaineering, Cycling)<br />' +
     '<br />' +
     '<table border="0" width="168">' +
