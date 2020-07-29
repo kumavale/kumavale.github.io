@@ -73,7 +73,8 @@ function make_window8(vram, w, h)
         '> ls<br />' +
         '<span id="click_about" onclick="click_about()">About</span><br />' +
         //'<span id="click_history" onclick="click_history()">History</span><br />' +
-        '<span id="click_certification" onclick="click_certification()">Certification</span><br />';
+        '<span id="click_certification" onclick="click_certification()">Certification</span><br />' +
+        '<span id="click_products" onclick="click_products()">Products</span><br />';
 
     document.getElementById('cons_cross').innerHTML =
         '<span id="click_cross" onclick="click_cross()">X</span>';

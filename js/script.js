@@ -64,22 +64,29 @@ window.onmousemove = function(e) {
 
 function click_about()
 {
-    item_color_change(true, false, false);
+    item_color_change(true, false, false, false);
     document.getElementById('textarea').innerHTML = About_text;
     document.getElementById('title_text').innerText = TITLE + ' - About';
 }
 
 //function click_history()
 //{
-//    item_color_change(false, true, false);
+//    item_color_change(false, true, false, false);
 //    document.getElementById('textarea').innerHTML = History_text;
 //}
 
 function click_certification()
 {
-    item_color_change(false, false, true);
+    item_color_change(false, false, true, false);
     document.getElementById('textarea').innerHTML = Certification_text;
     document.getElementById('title_text').innerText = TITLE + ' - Certification';
+}
+
+function click_products()
+{
+    item_color_change(false, false, false, true);
+    document.getElementById('textarea').innerHTML = Products_text;
+    document.getElementById('title_text').innerText = TITLE + ' - Products';
 }
 
 function click_cross()
@@ -87,11 +94,12 @@ function click_cross()
     document.getElementById('console').style.display = "none";
 }
 
-function item_color_change(about, history, certification)
+function item_color_change(about, history, certification, products)
 {
     document.getElementById('click_about').style.color = about ? "Aqua" : "Azure";
     //document.getElementById('click_history').style.color = history ? "#00FFFF" : "#FFFFFF";
     document.getElementById('click_certification').style.color = certification ? "Aqua" : "Azure";
+    document.getElementById('click_products').style.color = products ? "Aqua" : "Azure";
 }
 
 window.addEventListener('resize', function(e) {
