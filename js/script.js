@@ -1,116 +1,108 @@
+var xmlhttp = new XMLHttpRequest();
 
-var TITLE = 'kmgy';
+class ContributionActivity {
+    constructor(year, month, repo, action) {
+        this.year         = year;
+        this.month        = month;
+        this.repo         = repo;
+        this.action       = action;  // ["commit"|"pull_request"|"star"]
 
-window.onload = function()
-{
-    graphic();
-
-    let t_icon = document.getElementById('title_icon');
-    let t_text = document.getElementById('title_text');
-    let img    = document.createElement('img');
-
-    t_text.innerText = TITLE;
-    img.src = 'https://avatars1.githubusercontent.com/u/29778890?s=400&v=4';
-    img.style.height = '100%';
-    img.style.position = 'relative';
-    t_icon.insertBefore(img, t_icon.firstChild);
-
-    document.getElementById('title_text').style.fontSize =
-        document.getElementById('title_back').offsetHeight / 2 + 'px';
-
-    // TODO Adding top page
-    click_about();
-};
-
-var move_flg = false;
-var move_start_x, move_start_y;
-
-// start drag
-window.onmousedown = function(e) {
-    if (document.elementFromPoint(e.pageX, e.pageY).id == 'cons_title') {
-        move_flg = true;
-        move_start_x = e.clientX - document.getElementById('console').offsetLeft;
-        move_start_y = e.clientY - document.getElementById('console').offsetTop;
+        this.commit_count = 0;
+        this.pull_request_title = "";
+        this.url = "";
     }
 }
 
-// end drag
-window.onmouseup = function(e) {
-    move_flg = false;
-}
+// 最新情報の表示
+// GitHubのContribution activityを表示する
+xmlhttp.onreadystatechange = function () {
+    if (xmlhttp.readyState == 4) {
+        if (xmlhttp.status != 200) {
+            console.log("Failed to download contents");
+            var latest = document.getElementById("latest_information");
+            latest.innerHTML = "データの取得に失敗<br />";
+            return;
+        }
 
-// drag
-window.onmousemove = function(e) {
-    if (move_flg == true) {
-        let cons   = document.getElementById('console');
-        let screen = document.getElementById('screen');
-        cons.style.left = (e.clientX - move_start_x) + 'px';
-        cons.style.top = (e.clientY - move_start_y) + 'px';
+        var data = JSON.parse(xmlhttp.responseText);
+        var latest = document.getElementById("latest_information");
+        var litr = document.getElementById("latest_information_table_row");
+        var contribution_activities = [];
 
-        if (cons.offsetLeft < 0) {
-            cons.style.left = '0px';
-        }
-        if (cons.offsetTop < 0) {
-            cons.style.top = '0px';
-        }
-        if (cons.offsetLeft > screen.offsetWidth - 320) {
-            cons.style.left = screen.offsetWidth - 320 + 'px';
-        }
-        if (cons.offsetTop > screen.offsetHeight - 200) {
-            cons.style.top = screen.offsetHeight - 200 + 'px';
-        }
+        data.forEach(d => {
+            var created_at = new Date(d.created_at);
+            var year = created_at.getFullYear() + "年";
+            var month = (created_at.getMonth() + 1) + "月";
+            var repo = d.repo.name;
+
+            var new_activity = true;
+            contribution_activities.forEach(ca => {
+                if (year == ca.year && month == ca.month && repo == ca.repo) {
+                    if (d.payload.commits) {
+                        ca.commit_count += d.payload.commits.length;
+                        new_activity = false;
+                        return;  // forEachでのcontinue
+                    }
+                }
+            });
+
+            if (new_activity) {
+                if (d.payload.commits) {
+                    // commit
+                    var ca = new ContributionActivity(year, month, repo, "commit");
+                    ca.commit_count = d.payload.commits.length;
+                    contribution_activities.push(ca);
+                } else if (d.payload.pull_request && d.payload.pull_request.merged) {
+                    // merge
+                    var ca = new ContributionActivity(year, month, repo, "pull_request");
+                    ca.pull_request_title = d.payload.pull_request.title;
+                    ca.url = d.payload.pull_request.html_url;
+                    contribution_activities.push(ca);
+                } else if (d.payload.action == "started") {
+                    // star
+                    var ca = new ContributionActivity(year, month, repo, "star");
+                    contribution_activities.push(ca);
+                }
+            }
+        });
+
+        if (contribution_activities.length == 0) { return; }
+
+        // 月毎に表示する
+        for (var i = 0; i < contribution_activities.length; ++i) {
+            var ca = contribution_activities[i];
+
+            // [20XX年 XX月]の表示
+            latest.innerHTML += "<table><tr><td><nobr>" + ca.year + " " + ca.month + "</nobr></td><td width='200'><hr size='1'></td></tr></table>";
+
+            // activityの表示
+            for (; i < contribution_activities.length; ++i) {
+                var ca2 = contribution_activities[i];
+
+                if (ca.year != ca2.year || ca.month != ca2.month) {
+                    --i;
+                    break;
+                }
+
+                if (ca2.action == "commit") {
+                    latest.innerHTML += "<a href='https://github.com/" + ca2.repo + "' target='_blank'>" + ca2.repo + "</a>&nbsp;&nbsp;" + ca2.commit_count + " commit" + ((ca2.commit_count != 1) ? "s" : "") + "<br>";
+                } else if (ca2.action == "pull_request") {
+                    latest.innerHTML += merged_svg();
+                    latest.innerHTML += " <a href='" + ca2.url+ "' target='_blank' style='color:#24292E;text-decoration:none'>" + ca2.pull_request_title + "</a><br>";
+                } else if (ca2.action == "star") {
+                    latest.innerHTML += "★ <a href='https://github.com/" + ca2.repo + "' target='_blank' style='color:#24292E;text-decoration:none'>" + ca2.repo + "</a><br>";
+                }
+            }
+
+            latest.innerHTML += "<br>";
+        };
     }
 }
 
-function click_about()
-{
-    item_color_change(true, false, false, false);
-    document.getElementById('textarea').innerHTML = About_text;
-    document.getElementById('title_text').innerText = TITLE + ' - About';
+function merged_svg() {
+    return '<svg title="Merged" class="octicon octicon-git-merge text-purple" height="16" viewBox="0 0 16 16" version="1.1" width="16" aria-hidden="true"><path fill-rule="evenodd" d="M5 3.254V3.25v.005a.75.75 0 110-.005v.004zm.45 1.9a2.25 2.25 0 10-1.95.218v5.256a2.25 2.25 0 101.5 0V7.123A5.735 5.735 0 009.25 9h1.378a2.251 2.251 0 100-1.5H9.25a4.25 4.25 0 01-3.8-2.346zM12.75 9a.75.75 0 100-1.5.75.75 0 000 1.5zm-8.5 4.5a.75.75 0 100-1.5.75.75 0 000 1.5z"></path></svg>';
 }
 
-//function click_history()
-//{
-//    item_color_change(false, true, false, false);
-//    document.getElementById('textarea').innerHTML = History_text;
-//}
+xmlhttp.open("GET", "https://api.github.com/users/kumavale/events");
+xmlhttp.send();
 
-function click_certification()
-{
-    item_color_change(false, false, true, false);
-    document.getElementById('textarea').innerHTML = Certification_text;
-    document.getElementById('title_text').innerText = TITLE + ' - Certification';
-}
-
-function click_products()
-{
-    item_color_change(false, false, false, true);
-    document.getElementById('textarea').innerHTML = Products_text;
-    document.getElementById('title_text').innerText = TITLE + ' - Products';
-}
-
-function click_cross()
-{
-    document.getElementById('console').style.display = "none";
-}
-
-function item_color_change(about, history, certification, products)
-{
-    document.getElementById('click_about').style.color = about ? "Aqua" : "Azure";
-    //document.getElementById('click_history').style.color = history ? "#00FFFF" : "#FFFFFF";
-    document.getElementById('click_certification').style.color = certification ? "Aqua" : "Azure";
-    document.getElementById('click_products').style.color = products ? "Aqua" : "Azure";
-}
-
-window.addEventListener('resize', function(e) {
-    document.getElementById('title_text').style.fontSize =
-        document.getElementById('title_back').offsetHeight / 2 + 'px';
-});
-
-document.onkeydown = function(e) {
-    //document.getElementById('textarea').innerText = e.key;
-    if (e.code == "F2" && e.shiftKey == true) {
-        // Visible console
-        document.getElementById('console').style.display = "block";
-    }
-};

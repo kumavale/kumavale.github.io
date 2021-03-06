@@ -56,7 +56,7 @@ var About_text =
     '</table>'
 ;
 
-var Certification_text =
+var Qualification_text =
     ' * ITパスポート<br />' +
     ' * 基本情報技術者試験<br />' +
     ' * 応用情報技術者試験<br />' +
