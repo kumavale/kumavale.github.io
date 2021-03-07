@@ -2,10 +2,10 @@ var xmlhttp = new XMLHttpRequest();
 
 class ContributionActivity {
     constructor(year, month, repo, action) {
-        this.year         = year;
-        this.month        = month;
-        this.repo         = repo;
-        this.action       = action;  // ["commit"|"pull_request"|"star"]
+        this.year   = year;
+        this.month  = month;
+        this.repo   = repo;
+        this.action = action;  // ["commit"|"pull_request"|"star"]
 
         this.commit_count = 0;
         this.pull_request_title = "";
@@ -32,7 +32,7 @@ xmlhttp.onreadystatechange = function () {
         data.forEach(d => {
             var created_at = new Date(d.created_at);
             var year = created_at.getFullYear() + "年";
-            var month = (created_at.getMonth() + 1) + "月";
+            var month = ("00" + (created_at.getMonth() + 1)).slice(-2) + "月";
             var repo = d.repo.name;
 
             var new_activity = true;

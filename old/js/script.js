@@ -78,7 +78,7 @@ function click_about()
 function click_qualification()
 {
     item_color_change(false, false, true, false);
-    document.getElementById('textarea').innerHTML = qualification_text;
+    document.getElementById('textarea').innerHTML = Qualification_text;
     document.getElementById('title_text').innerText = TITLE + ' - Qualification';
 }
 
