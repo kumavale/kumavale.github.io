@@ -1,23 +1,21 @@
 const username = "kumavale";
-const repos = [
-    "ctc",
-    "jaian",
-    "concatsql",
-    "overwritesql",
-    "fmtcalc",
-    "sisterm",
-    "nand2tetris",
-    "mipsi",
-    "PenipeniWinter",
-    "toGist",
-    "zlp",
-    "ExPing-t",
-    "programming",
-    "vim-weather",
-    "clipac",
-];
+const repos_json_url = "https://gist.githubusercontent.com/kumavale/a52afa35c9ec96f992e9891b2114598b/raw/repos.json";
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", async function() {
+
+    let repos = [];  // リポジトリの名前
+
+    // GASからリポジトリ情報を取得
+    await fetch(repos_json_url, {
+        mode: "cors",
+    })
+    .then(data => data.json())
+    .then(json => {
+        json.repos.forEach(repo => {
+            repos.push(repo.name);
+        });
+    });
+
     let products = document.getElementById("products");
     let table = document.createElement("table");
     table.style.textAlign = "center";
@@ -45,8 +43,10 @@ document.addEventListener("DOMContentLoaded", function() {
             img2.src       = "https://github-readme-stats.vercel.app/api/pin/?username=" + username + "&repo=" + repos[i];
         } else {
             img2.className     = "product_repo";
-            img2.width         = img1.width;
             img2.style.opacity = 0;
+            img1.onload = function() {
+                img2.width = this.naturalWidth;
+            };
         }
 
         a1.appendChild(img1);
