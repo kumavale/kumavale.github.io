@@ -1,4 +1,4 @@
-const content_url = "https://gist.githubusercontent.com/kumavale/be97c65882deedc6dd45cadf435941de/raw/a78e757f74f15f2a4bf80dd186d1dc1884c746e6/qualification.json";
+const content_url = "https://gist.githubusercontent.com/kumavale/be97c65882deedc6dd45cadf435941de/raw/qualification.json";
 
 // 資格情報
 function Qualification(date, name, remarks) {
