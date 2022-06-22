@@ -1,0 +1,17 @@
+table {
+    border: 1px solid;
+    width: 700px;
+}
+
+tr, td {
+    border: 1px solid;
+    text-align: left;
+}
+
+.date, .name {
+    font-weight: bold;
+}
+
+.main {
+    background-image: url("../images/qualification.png");
+}

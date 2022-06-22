@@ -44,7 +44,7 @@ var About_text =
             '</a>' +
         '</td>' +
         '<td>' +
-            '<a href="https://qiita.com/kmgy/">' +
+            '<a href="https://qiita.com/kumavale/">' +
                 '<img src="images/qiita.png" width="64">' +
             '</a>' +
         '</td>' +
