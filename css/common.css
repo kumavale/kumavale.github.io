@@ -70,7 +70,7 @@ main {
 
 .responsive_button {
     display: none;
-    position: absolute;
+    position: fixed;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -110,7 +110,7 @@ main {
 
     .menu, .border {
         display: none;
-        position: absolute;
+        position: fixed;
         width: 32vw;
     }
 }
