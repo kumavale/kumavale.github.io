@@ -4,7 +4,13 @@ body {
 
 article {
     display: flex;
+    height: auto;
     min-height: 100%;
+    flex-direction: row;
+}
+
+ul {
+    margin-top: 64px;
 }
 
 ul li {
@@ -18,12 +24,15 @@ li::before {
 }
 
 .menu {
-    height: 100%;
+    top: 0;
+    height: calc(100vh - 32px);
     width: 18vw;
     background-color: #F0F0FF;
     padding-top: 32px;
-    position: fixed;
+    z-index: 100;
     overflow: scroll;
+    position: -webkit-sticky;
+    position: sticky;
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
@@ -33,21 +42,22 @@ li::before {
 }
 
 .border {
+    top: 0;
     width: 4px;
-    height: 100%;
+    height: auto;
     background-color: #D0D0D0;
     border-left: solid 1px #AAAAAA;
     border-right: solid 1px;
-    margin-left: 18vw;
     padding-top: 32px;
-    position: fixed;
+    position: -webkit-sticky;
+    position: sticky;
 }
 
-.main {
-    margin-left: 18vw;
+main {
     width: 82vw;
     height: auto;
     padding-top: 32px;
+    flex-grow: 1;
 }
 
 #menu_top::before           { color: #FFCCCC; }
@@ -58,3 +68,49 @@ li::before {
 #menu_other::before         { color: #333399; }
 #menu_preparation::before   { color: #CC00CC; }
 
+.responsive_button {
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 101;
+    margin: 32px;
+}
+
+.menu_line {
+    background: #696969;
+    width: 32px;
+    height: 4px;
+    margin: 4px;
+}
+
+.black-bg {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    background-color: #000000;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: opacity 0.4s;
+    transition: opacity 0.4s;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .responsive_button {
+        display: flex;
+    }
+
+    .menu, .border {
+        display: none;
+        position: absolute;
+        width: 32vw;
+    }
+}

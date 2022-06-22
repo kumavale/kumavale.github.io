@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         var ca = contribution_activities[i];
 
         // [20XX年 XX月]の表示
-        latest.innerHTML += "<table><tr><td><nobr>" + ca.year + " " + ca.month + "</nobr></td><td width='200'><hr size='1'></td></tr></table>";
+        latest.innerHTML += "<table><tr><td><nobr>" + ca.year + " " + ca.month + "</nobr></td><td width='100%'><hr size='1'></td></tr></table>";
 
         // activityの表示
         for (; i < contribution_activities.length; ++i) {

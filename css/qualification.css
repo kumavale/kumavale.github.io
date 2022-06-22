@@ -1,6 +1,11 @@
+main {
+    background-image: url("../images/qualification.png");
+}
+
 table {
     border: 1px solid;
     width: 700px;
+    max-width: 95%;
 }
 
 tr, td {
@@ -10,8 +15,4 @@ tr, td {
 
 .date, .name {
     font-weight: bold;
-}
-
-.main {
-    background-image: url("../images/qualification.png");
 }

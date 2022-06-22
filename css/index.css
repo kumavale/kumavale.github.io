@@ -1,3 +1,25 @@
-.main {
+main {
     background-image: url("../images/kumavale.png");
+}
+
+.contents {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.profile {
+    text-align: center;
+    margin: 8px;
+    padding: 16px;
+}
+
+.profile > table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.information {
+    margin: 8px;
+    padding: 16px;
 }

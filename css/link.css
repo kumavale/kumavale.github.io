@@ -1,3 +1,11 @@
-.main {
+main {
     background-image: url("../images/link.png");
+}
+
+table {
+    max-width: 95%;
+}
+
+td {
+    padding: 16px;
 }

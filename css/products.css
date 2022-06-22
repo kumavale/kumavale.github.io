@@ -1,8 +1,8 @@
+main {
+    background-image: url("../images/products.png");
+}
+
 .product_repo {
     margin: 8px;
     text-align: center;
-}
-
-.main {
-    background-image: url("../images/products.png");
 }
