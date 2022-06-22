@@ -31,16 +31,18 @@ document.addEventListener("DOMContentLoaded", async function() {
         let img1 = document.createElement("img");
         let img2 = document.createElement("img");
 
-        a1.href        = "https://github.com/" + username + "/" + repos[i];
-        a1.target      = "_blank";
-        img1.className = "product_repo";
-        img1.src       = "https://github-readme-stats.vercel.app/api/pin/?username=" + username + "&repo=" + repos[i];
+        a1.href             = "https://github.com/" + username + "/" + repos[i];
+        a1.target           = "_blank";
+        img1.className      = "product_repo";
+        img1.src            = "https://github-readme-stats.vercel.app/api/pin/?username=" + username + "&repo=" + repos[i];
+        img1.style.maxWidth = "90vw";
 
         if (i+1 < repos.length) {
-            a2.href        = "https://github.com/" + username + "/" + repos[++i];
-            a2.target      = "_blank";
-            img2.className = "product_repo";
-            img2.src       = "https://github-readme-stats.vercel.app/api/pin/?username=" + username + "&repo=" + repos[i];
+            a2.href             = "https://github.com/" + username + "/" + repos[++i];
+            a2.target           = "_blank";
+            img2.className      = "product_repo";
+            img2.src            = "https://github-readme-stats.vercel.app/api/pin/?username=" + username + "&repo=" + repos[i];
+            img2.style.maxWidth = "90vw";
         } else {
             img2.className     = "product_repo";
             img2.style.opacity = 0;

@@ -78,7 +78,7 @@ main {
     height: 40px;
     cursor: pointer;
     z-index: 101;
-    margin: 32px;
+    margin: 16px;
 }
 
 .menu_line {
@@ -111,6 +111,6 @@ main {
     .menu, .border {
         display: none;
         position: fixed;
-        width: 32vw;
+        width: 50vw;
     }
 }

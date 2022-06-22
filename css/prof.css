@@ -2,6 +2,11 @@ main {
     background-image: url("../images/profile.png");
 }
 
+table {
+    width: 700px;
+    max-width: 95%;
+}
+
 td {
     padding: 16px;
 }

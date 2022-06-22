@@ -3,9 +3,10 @@ main {
 }
 
 table {
-    max-width: 95%;
+    width: 700px;
+    max-width: 50%;
 }
 
 td {
-    padding: 16px;
+    padding: 16px 4px 16px;
 }
