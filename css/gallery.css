@@ -1,0 +1,20 @@
+main {
+    background-image: url("../images/gallery.png");
+}
+
+#gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.image {
+    margin: 4px;
+    padding: 8px;
+    width: 512px;
+    max-width: 90%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    background-color: #FFF;
+}

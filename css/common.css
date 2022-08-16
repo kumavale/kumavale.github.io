@@ -66,7 +66,8 @@ main {
 #menu_link::before          { color: #0099FF; }
 #menu_old::before           { color: #0000FF; }
 #menu_other::before         { color: #333399; }
-#menu_preparation::before   { color: #CC00CC; }
+#menu_gallery::before       { color: #CC00CC; }
+#menu_preparation::before   { color: #EE00DD; }
 
 .responsive_button {
     display: none;
