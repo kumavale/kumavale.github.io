@@ -2,7 +2,7 @@ main {
     background-image: url("../images/gallery.png");
 }
 
-#gallery {
+#gallery, #gallery_noscript {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
