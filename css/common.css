@@ -64,10 +64,10 @@ main {
 #menu_products::before      { color: #00FF00; }
 #menu_qualification::before { color: #33FFFF; }
 #menu_link::before          { color: #0099FF; }
-#menu_old::before           { color: #0000FF; }
-#menu_gallery::before       { color: #333399; }
-#menu_other::before         { color: #CC00CC; }
-#menu_preparation::before   { color: #EE00DD; }
+#menu_gallery::before       { color: #0000FF; }
+#menu_other::before         { color: #333399; }
+#menu_preparation::before   { color: #CC00CC; }
+#menu_preparation2::before  { color: #EE00DD; }
 
 .responsive_button {
     display: none;
