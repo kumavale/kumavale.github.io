@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
         image.classList.add("image");
         image.src = 'https://res.cloudinary.com/kumavale/image/upload/' + image_size + '/v1660699986/CatGallery/' + filename;
+        image.loading = "lazy";
 
         gallery.appendChild(image);
     }
