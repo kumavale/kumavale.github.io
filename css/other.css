@@ -1,7 +1,5 @@
-main {
-    background-color: #F0F0FF;
-}
-
-table {
+#contents {
+    width: 700px;
     max-width: 95%;
+    margin: auto;
 }
