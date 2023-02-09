@@ -9,25 +9,11 @@ article {
     flex-direction: row;
 }
 
-ul {
-    margin-top: 64px;
-}
-
-ul li {
-    list-style: none;
-    position: relative;
-    margin-top: 32px;
-}
-
-li::before {
-    content: '●';
-}
-
 .menu {
     top: 0;
     height: calc(100vh - 32px);
     width: 18vw;
-    background-color: #F0F0FF;
+    background-color: #F1F1FF;
     padding-top: 32px;
     z-index: 100;
     overflow: scroll;
@@ -59,15 +45,6 @@ main {
     padding-top: 32px;
     flex-grow: 1;
 }
-
-#menu_top::before           { color: #FFCCCC; }
-#menu_products::before      { color: #00FF00; }
-#menu_qualification::before { color: #33FFFF; }
-#menu_link::before          { color: #0099FF; }
-#menu_gallery::before       { color: #0000FF; }
-#menu_other::before         { color: #333399; }
-#menu_preparation::before   { color: #CC00CC; }
-#menu_preparation2::before  { color: #EE00DD; }
 
 .responsive_button {
     display: none;

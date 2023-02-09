@@ -1,0 +1,22 @@
+#menu_top::before           { color: #FECCCC; }
+#menu_products::before      { color: #00FE00; }
+#menu_qualification::before { color: #33FEFE; }
+#menu_link::before          { color: #0099FE; }
+#menu_gallery::before       { color: #0000FE; }
+#menu_other::before         { color: #444499; }
+#menu_preparation::before   { color: #CC00CC; }
+#menu_preparation2::before  { color: #EE00DD; }
+
+ul {
+    margin-top: 64px;
+}
+
+ul li {
+    list-style: none;
+    position: relative;
+    margin-top: 32px;
+}
+
+li::before {
+    content: '●';
+}

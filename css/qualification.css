@@ -16,3 +16,7 @@ tr, td {
 .date, .name {
     font-weight: bold;
 }
+
+#qualification {
+    padding-bottom: 128px;
+}

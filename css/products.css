@@ -2,6 +2,10 @@ main {
     background-image: url("../images/products.png");
 }
 
+#products {
+    padding-bottom: 128px;
+}
+
 .product_repo {
     margin: 8px;
     text-align: center;
